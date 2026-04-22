@@ -158,7 +158,7 @@ async def predict_spiral(file: UploadFile = File(...)):
         img_array = np.array(img) / 255.0
         img_array = np.expand_dims(img_array, axis=0)
         probability = float(spiral_model.predict(img_array)[0][0])
-        prediction = 1 if probability > 0.65 else 0
+        prediction = 1 if probability > 0.5 else 0
         return {
             "prediction": prediction,
             "label": "Parkinson" if prediction == 1 else "Healthy",

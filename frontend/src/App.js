@@ -277,8 +277,31 @@ function App() {
       <div style={card}>
         <h2 style={{ color: "#8e44ad" }}>🌀 Spiral Drawing</h2>
         <p style={{ color: "#555", fontSize: 14 }}>
-          Draw a spiral on the canvas below using your mouse or trackpad.
+          Draw a spiral on the canvas OR upload a spiral image.
         </p>
+
+        {/* Upload spiral image */}
+        <div style={{ marginBottom: 12, padding: 12,
+          background: "#f3eafd", borderRadius: 8 }}>
+          <p style={{ margin: "0 0 8px 0", fontSize: 13, color: "#555" }}>
+            📁 Upload a spiral image (.jpg, .png):
+          </p>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => {
+              const file = e.target.files[0];
+              if (!file) return;
+              setLoading(true);
+              const formData = new FormData();
+              formData.append("file", file);
+              axios.post("http://127.0.0.1:8002/predict/spiral", formData)
+                .then(res => { setSpiralResult(res.data); setLoading(false); })
+                .catch(() => { setSpiralResult({ error: "Failed to connect" }); setLoading(false); });
+            }}
+            style={{ fontSize: 13 }}
+          />
+        </div>
 
         <canvas
           ref={canvasRef}
