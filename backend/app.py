@@ -431,7 +431,7 @@ async def generate_pdf_report(report_data: dict):
         else: risk_hex = "#22c55e"
 
         # Score as X.XX / 10 instead of percentage
-        try: score_display = f"{round(float(final_score) * 10, 2):.2f} / 10"
+        try: score_display = f"{round(float(final_score) * 10, 2):.2f} / 100"
         except: score_display = "N/A"
 
         banner_data = [[
