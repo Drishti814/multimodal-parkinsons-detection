@@ -1,4 +1,6 @@
+node_modules/
 venv/
+datasets/
 __pycache__/
 *.pyc
-datasets/
+.DS_Store
