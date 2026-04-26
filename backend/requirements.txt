@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+numpy
+joblib
+tensorflow
+Pillow
+parselmouth
+pydub
+scikit-learn
+reportlab
